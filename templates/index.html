@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+
+{% block header %}
+<style>
+    .jumbotron.jumbotron-fluid{
+        width: 85%;
+        margin:5%;
+        border-radius: 30px;
+        padding:2.5%;
+    }
+
+    .list-group {
+        float: left;
+        margin-top: 5%;
+        width: 23%;
+        background-color: #e9ecef;
+        border-radius: 20px;
+    }
+
+    .posts {
+        float:left;
+        width:75%;
+    }
+
+    .list-group-item{
+        background-color:#e9ecef;
+    }
+
+    .list-group-item a{
+        text-decoration: none;
+        font-size: 20px;
+        color: #191919;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class = "posts">
+    {% for i in data %}
+
+    <div id = "common" class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 id  = "{{ i['title'] }}" class="display-4">{{ i['title'] }}</h1>
+        {% for j in i['body'] %}
+            <p class="lead">{{ j }}</xp>
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<ul id = "common" class="list-group">
+    {% for i in titles %}
+        <li class="list-group-item"><a href="#{{ i }}">{{ i }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
