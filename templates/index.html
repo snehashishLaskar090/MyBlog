@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block header %}
+<link rel="stylesheet" href="../static/base.css">
+{% endblock %}
+{% block title %} Home Page {% endblock %}
+
+
+{% block content %}
+{% for i in data %}
+    <div class = "container">
+    <h1 class = "title">{{ i['title'] }}<small>Posted on {{ i['date'] }}</small></h1>
+        {% for para in i['body'] %}
+            <p>{{ para }}</p>
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}

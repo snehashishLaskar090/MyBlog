@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}New Post{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+{% if login == False %}
+<form method = 'POST'>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input name = 'password' type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <button type="submit" name = 'login' class="btn btn-primary">Submit</button>
+  </form>
+{% endif %}
+{% if login == True %}
+    <div>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input type="text" name = 'title' class="form-control" id="exampleFormControlInput1"">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Date</label>
+                <input type="text" name = 'date' class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Text</label>
+                <textarea class="form-control" name = 'txt' id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+{% endif %}
+
+{% endblock %}
