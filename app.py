@@ -10,6 +10,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 @app.route('/', methods=['GET'])
 def index():
     data = db.readDb()
+    data.reverse()
     return render_template('index.html', data=data)
 
 @app.route('/new', methods=['POST', 'GET'])
@@ -33,5 +34,21 @@ def add():
     else:
         return render_template('add-post.html', login = False)
 
+@app.route('/delete', methods = ['POST', 'GET'])
+def deleter():
+    if request.method == 'POST':
+        if 'login' in request.form:
+            password = request.form['password']
+
+            if password == 'snehashish08036#@#':
+                return render_template('del-post.html',login = True)
+            else:
+                return render_template('del-post.html',login = False)
+        else:
+            title = request.form['title']
+            db.deletePost(title)
+            return redirect('/')
+    else:
+        return render_template('del-post.html', login = False)
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port = 8000)

@@ -30,4 +30,11 @@ def addPost(title:str, date:str, body:list):
     data.append(Dict)
     writeDb(data)
 
+def deletePost(title:str):
+    data = readDb()
+    for i in data:
+        if i['title'] == title:
+            del data[data.index(i)]
+    writeDb(data)
+
 init()
